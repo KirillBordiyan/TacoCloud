@@ -1,4 +1,4 @@
-package itselfeducation.tacocloud;
+package itselfeducation.tacocloud.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
