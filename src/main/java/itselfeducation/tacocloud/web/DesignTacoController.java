@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 import itselfeducation.tacocloud.Ingredient;
 import itselfeducation.tacocloud.Taco;
 import itselfeducation.tacocloud.TacoOrder;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,8 +50,14 @@ public class DesignTacoController {
     }
 
     //that method will handle POST-requests with path /design
+    //for check valid info, we type @Valid before param we need check + errors Errors-class,
+    // than we can see errors from messages in @NotNull, @NotBlank, @Size in Taco and TacoOrder
     @PostMapping //accept taco recipe from menu in /design
-    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder){
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder){
+
+        if (errors.hasErrors()) {
+            return "design";
+        }
 
         tacoOrder.addTaco(taco); //we added new recipe of taco in TacoOrder
         log.info("Processing taco: {}", taco);

@@ -19,6 +19,7 @@
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
+
                 <!-- for any block of item we need iterable list of ingredients
                 class is usually "ingredient-group"
                 id variable depending on the group we want to iterable
@@ -58,14 +59,23 @@
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
+            </br>
+
+            <div th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}">
+                Error message for dough ingredients here
+            </div>
         </div>
 
         <div>
             <h3>Name your taco recipe</h3>
             <input type="text" th:field="*{name}"/>
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                Name error here
+            </div>
             <br/>
             <button>Submit your Taco</button>
         </div>
+
     </form>
 </body>
 </html>
