@@ -1,4 +1,4 @@
-package itselfeducation.tacocloud;
+package itselfeducation.tacocloud.data;
 
 import lombok.Data;
 
