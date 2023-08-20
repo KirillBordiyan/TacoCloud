@@ -60,7 +60,7 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<!-- instead of starter DATA JDBS, we'll use SpringBootJDBS-->
+		<!-- we'll use starter DATA JDBS,  instead of SpringBootJDBS template-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
