@@ -48,8 +48,8 @@
 			<artifactId>testng</artifactId>
 			<version>RELEASE</version>
 			<scope>compile</scope>
-
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -58,6 +58,18 @@
 		<dependency> <!-- spring validation using for checking current info in fields/params-->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<dependency><!-- jdbc -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency><!-- inner H2 DB-->
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.220</version>
+			<scope>runtime</scope>
 		</dependency>
 
 	</dependencies>
