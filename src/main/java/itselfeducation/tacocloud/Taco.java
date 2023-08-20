@@ -4,17 +4,18 @@ import itselfeducation.tacocloud.data.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table
+@Entity
 public class Taco {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date createdAt = new Date();
 
@@ -22,8 +23,11 @@ public class Taco {
     @Size(min = 3, message = "Name must be at least 3 character long")
     private String name;
 
-    @NotNull
     @Size(min = 3, message = "You must choose at least 3 ingredient")
-    private List<Ingredient> ingredients;
+    @ManyToMany()
+    private List<Ingredient> ingredients = new ArrayList<>();
 
+    public void addIngredient(Ingredient ingredient){
+        this.ingredients.add(ingredient);
+    }
 }

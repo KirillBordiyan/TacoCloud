@@ -1,12 +1,12 @@
 package itselfeducation.tacocloud;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,11 +17,12 @@ import java.util.List;
 //@Table automatically create table (using inner par "name" - taco_order)
 // by that annotation and variable `id` using as a primary key of the table
 @Data
-@Table("Taco_Order")
+@Entity
 public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     //we can use @Column("placed_at_the") to rename DB Table column
     private Date placedAt;
@@ -43,6 +44,7 @@ public class TacoOrder implements Serializable {
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV/CSV code")
     private String ccCVV;
 
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco){
